@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+
+    <h1>My web site</h1>
+    <nav>
+      <ul>
+        <li>
+          <a style="<%= page == 'index.html' ? 'font-weight:bold' : '' %>"
+             href="/">Home</a>
+        </li>
+        <li>
+          <a style="<%= page.match(/pages/) ? 'font-weight:bold' : '' %>"
+             href="/pages">Pages</a>
+        </li>
+      </ul>
+    </nav>
+    <%= require(`html-loader!./${page}`) %> <br />
+  </body>
+</html>
