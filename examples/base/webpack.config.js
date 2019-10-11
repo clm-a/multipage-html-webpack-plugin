@@ -14,6 +14,8 @@ module.exports = {
                                       //   src/layout.html
     new MultipageHtmlWebpackPlugin({
       pages: './src/pages/*.html',		// * How to find pages on the local filesystem
+			// pages: ['page1.html', 'page2.html']
+			// pages: [{ filename: 'page1.html'}, {filename: 'page2.html'}]
       pagesPath: 'pages/',            // * Page partials directory, relative to the
       																//   layout, used both for partial inclusion
   		  															//   and document url location

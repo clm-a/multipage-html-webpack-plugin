@@ -15,11 +15,31 @@ module.exports = class MultipageHtmlWebpackPlugin{
     this.options = Object.assign(defaultOptions, userOptions);
   }
   apply(compiler){
-    glob.sync(this.options.pages).map( (e) => {
-      if(e == this.options.layout){
+    let files = null;
+    switch(typeof this.options.pages){
+      case "string":
+        files = glob.sync(this.options.pages)
+        break;
+      case "object":
+        if(Array.isArray(this.options.pages))
+          files = this.options.pages
+        else{
+          console.log("Unsupported 'pages' options")
+          process.exit(0)
+        }
+      break;
+      default:
+        console.log("Unsupported 'pages' options")
+        process.exit(0)
+    }
+
+
+    files.map( (e) => {
+      if(e == this.options.layout)
         return
-      }
-      const page = this.options.pagesPath + path.basename(e);
+      let filename = typeof e == 'object' ? e.filename : path.basename(e)
+
+      const page = this.options.pagesPath + filename;
       console.log("MultipageHtmlWebpackPlugin preparing "+page)
       const htmlWebpackPluginOptionsForPage = {
         templateParameters: {

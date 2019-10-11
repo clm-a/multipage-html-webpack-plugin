@@ -33,12 +33,14 @@ Add Multpage instance(s) to the Webpack plugin list
 
 ```js
   const MultipageHtmlWebpackPlugin = require('multipage-html-webpack-plugin')
-  
+
   module.exports = {
     // ...
     plugins: [
       new MultipageHtmlWebpackPlugin({
         pages: './src/pages/*.html', // How to find each page on the local filesystem
+        // pages: ['page1.html', 'page2.html'] // filenames within pagesPath directory
+  	// pages: [{ filename: 'page1.html'}, {filename: 'page2.html'}]
         pagesPath: 'pages/',         // Page partials directory, relative to the
                                      // layout, used both for partial inclusion
                                      // and document url location
@@ -51,12 +53,12 @@ Add Multpage instance(s) to the Webpack plugin list
     ],
     // ...
   }
-  
+
 ```
 
 This will publish as many pages as there are in the filesystem src/pages directory (injecting main Webpack entry as the HtmlWebpackPlugin usually does).
 
-Note that, in this exemple, you won't get an index file, add one by adding another instance of the plugin, where `pagePath` would be set to `''` (a blank string, see full example in this repository). 
+Note that, in this exemple, you won't get an index file, add one by adding another instance of the plugin, where `pagePath` would be set to `''` (a blank string, see full example in this repository).
 
 Every HtmlWebpackPlugin option is available. In this example, HtmlWebpackPlugin will inject the viewport meta tag in every page.
 
@@ -70,10 +72,12 @@ Build the entire project under dist directory (Webpack default's) : `npm run bui
 ## Options and defaults
 ```
 new MultipageHtmlWebpackPlugin({
-      layout: './src/layout.html',    // Optional
-      pages: './src/*.html',      		// Optional, how to find pages on the local filesystem, using glob patterns
-      pagesPath: 'pages/',            // Optional
-			htmlWebpackPluginOptions: {}    // 
+      layout: './src/layout.html',    	// Optional
+      pages: './src/*.html',		// Optional, how to find pages on the local filesystem, using glob patterns
+                                      	// It can also take an array of string or
+                                      	// an array of objects (with a filename key)
+      pagesPath: 'pages/',            	// Optional
+      htmlWebpackPluginOptions: {}    	// Optional
 })
 ```
 
@@ -81,5 +85,5 @@ new MultipageHtmlWebpackPlugin({
 - Not even one test !
 - Slash after pagesPath is  mandatory
 - Pages have to be in the same or a sub directory of the layout
-- `pages` option may soon also arbitrarily take an array of file paths or a hash (in order to map page to titles or any page-specific options).
+- When a hash is passed to `pages` option, the plugin should be able to set title or any page-specific options.
 - You have to restart the dev server when you add or remove a layout / html partial from the filesystem. However, live reloading is working both on assets and html partials / layouts when you are editing them.

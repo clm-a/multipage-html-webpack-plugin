@@ -1,6 +1,6 @@
 {
   "name": "multipage-html-webpack-plugin",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Basic wrapper around HtmlWebpackPlugin generating multiple pages based on html fragments inclusion into layouts",
   "main": "index.js",
   "scripts": {
