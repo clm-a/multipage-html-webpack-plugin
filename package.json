@@ -1,0 +1,34 @@
+{
+  "name": "multipage-html-webpack-plugin",
+  "version": "1.0.0-beta.1",
+  "description": "Basic wrapper around HtmlWebpackPlugin generating multiple pages based on html fragments inclusion into layouts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clm-a/multipage-html-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "html",
+    "html-webpack-plugin",
+    "layouts"
+  ],
+  "peerDependencies": {
+    "webpack": "^4.0.0"
+  },
+  "dependencies": {
+    "html-loader": "^0.5.5",
+    "glob": "^7.1.4",
+    "html-webpack-plugin": "4.0.0-beta.8"
+  },
+  "author": "Clément Alexandre (https://github.com/clm-a)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clm-a/multipage-html-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/clm-a/multipage-html-webpack-plugin#readme"
+}
