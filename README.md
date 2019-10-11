@@ -1,0 +1,1 @@
+# multipage-html-webpack-plugin
